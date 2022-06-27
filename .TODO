@@ -1,3 +1,6 @@
-Challenges:
+Challenges (Next level):
     ☐ Create a placeholder when there is no video selected or load the first video in the list.
+    ☐ Create a loading spinner and skeleton data when the video is loading.
     ☐ Create responsive design.
+    ☐ Authorizing the access to the event using a github or google account.
+    ☐ Disable user to click on a lesson when is not available.
