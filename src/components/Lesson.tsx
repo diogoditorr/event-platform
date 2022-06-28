@@ -29,7 +29,7 @@ export default function Lesson({
         }
     );
 
-    const isActiveLesson = slug === params.slug;
+    const isSelectedLesson = slug === params.slug;
 
     function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
         if (!isLessonAvailable) {
@@ -52,9 +52,9 @@ export default function Lesson({
                     className={classNames(
                         "rounded border border-gray-500 p-4 mt-2",
                         {
-                            "bg-green-500": isActiveLesson,
+                            "bg-green-500": isSelectedLesson,
                             "after:absolute after:border-x-[7px] after:border-y-[7px] after:border-green-500 after:top-[calc(50%-0.21875rem)] after:left-[-0.25rem] after:rotate-45 after:rounded-sm":
-                                isActiveLesson,
+                                isSelectedLesson,
                             "group-hover:border-green-500": isLessonAvailable,
                         }
                     )}
@@ -65,8 +65,8 @@ export default function Lesson({
                                 className={classNames(
                                     "text-sm font-medium flex items-center gap-2",
                                     {
-                                        "text-white": isActiveLesson,
-                                        "text-blue-500": !isActiveLesson,
+                                        "text-white": isSelectedLesson,
+                                        "text-blue-500": !isSelectedLesson,
                                     }
                                 )}
                             >
@@ -82,10 +82,11 @@ export default function Lesson({
 
                         <span
                             className={classNames(
-                                "text-xs rounded py-[0.125rem] px-2 text-white border",
+                                "text-xs font-bold rounded py-[0.125rem] px-2 text-white border",
                                 {
-                                    "border-white font-bold": isActiveLesson,
-                                    "border-green-300": !isActiveLesson,
+                                    "border-white": isSelectedLesson,
+                                    "border-green-300": !isSelectedLesson,
+                                    "text-green-300": !isSelectedLesson && !isLessonAvailable,
                                 }
                             )}
                         >
@@ -95,8 +96,8 @@ export default function Lesson({
 
                     <strong
                         className={classNames("mt-5 block", {
-                            "text-white": isActiveLesson,
-                            "text-gray-200": !isActiveLesson,
+                            "text-white": isSelectedLesson,
+                            "text-gray-200": !isSelectedLesson,
                         })}
                     >
                         {title}
