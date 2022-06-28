@@ -31,46 +31,77 @@ export default function Lesson({
 
     const isActiveLesson = slug === params.slug;
 
+    function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
+        if (!isLessonAvailable) {
+            event?.preventDefault();
+        }
+    }
+
     return (
-        <Link to={`/event/lesson/${slug}`} className="group">
+        <Link
+            to={`/event/lesson/${slug}`}
+            onClick={handleClick}
+            className={classNames("group", {
+                "cursor-not-allowed": !isLessonAvailable,
+            })}
+        >
             <span className="text-gray-300">{availableDateFormatted}</span>
 
-            <div
-                className={classNames(
-                    "rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500",
-                    {
-                        "bg-green-500": isActiveLesson,
-                    }
-                )}
-            >
-                <header className="flex items-center justify-between">
-                    {isLessonAvailable ? (
-                        <span className={classNames('text-sm font-medium flex items-center gap-2', {
-                            'text-white': isActiveLesson,
-                            'text-blue-500': !isActiveLesson
-                        })}>
-                            <CheckCircle size={20} />
-                            Conteúdo liberado
-                        </span>
-                    ) : (
-                        <span className="text-sm text-orange-500 font-medium flex items-center gap-2">
-                            <Lock size={20} />
-                            Em breve
-                        </span>
+            <div className="relative">
+                <div
+                    className={classNames(
+                        "rounded border border-gray-500 p-4 mt-2",
+                        {
+                            "bg-green-500": isActiveLesson,
+                            "after:absolute after:border-x-[7px] after:border-y-[7px] after:border-green-500 after:top-[calc(50%-0.21875rem)] after:left-[-0.25rem] after:rotate-45 after:rounded-sm":
+                                isActiveLesson,
+                            "group-hover:border-green-500": isLessonAvailable,
+                        }
                     )}
+                >
+                    <header className="flex items-center justify-between">
+                        {isLessonAvailable ? (
+                            <span
+                                className={classNames(
+                                    "text-sm font-medium flex items-center gap-2",
+                                    {
+                                        "text-white": isActiveLesson,
+                                        "text-blue-500": !isActiveLesson,
+                                    }
+                                )}
+                            >
+                                <CheckCircle size={20} />
+                                Conteúdo liberado
+                            </span>
+                        ) : (
+                            <span className="text-sm text-orange-500 font-medium flex items-center gap-2">
+                                <Lock size={20} />
+                                Em breve
+                            </span>
+                        )}
 
-                    <span className={classNames('text-xs rounded py-[0.125rem] px-2 text-white border', {
-                        'border-white': isActiveLesson,
-                        'border-green-300': !isActiveLesson
-                    })}>
-                        {type === "live" ? "AO VIVO" : "AULA PRÁTICA"}
-                    </span>
-                </header>
+                        <span
+                            className={classNames(
+                                "text-xs rounded py-[0.125rem] px-2 text-white border",
+                                {
+                                    "border-white font-bold": isActiveLesson,
+                                    "border-green-300": !isActiveLesson,
+                                }
+                            )}
+                        >
+                            {type === "live" ? "AO VIVO" : "AULA PRÁTICA"}
+                        </span>
+                    </header>
 
-                <strong className={classNames('mt-5 block', {
-                    'text-white': isActiveLesson,
-                    'text-gray-200': !isActiveLesson,
-                })}>{title}</strong>
+                    <strong
+                        className={classNames("mt-5 block", {
+                            "text-white": isActiveLesson,
+                            "text-gray-200": !isActiveLesson,
+                        })}
+                    >
+                        {title}
+                    </strong>
+                </div>
             </div>
         </Link>
     );
