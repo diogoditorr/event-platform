@@ -3,7 +3,7 @@ import { useGetLessonsQuery } from "../graphql/generated";
 import Lesson from "./Lesson";
 import "../styles/scrollbar.css";
 
-export default function Sidebar() {
+export default function Lessons() {
     const { data } = useGetLessonsQuery();
 
     return (

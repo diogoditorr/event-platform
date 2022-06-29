@@ -6,18 +6,17 @@ import {
     Lightning,
 } from "phosphor-react";
 import React from "react";
-import LogoRocketseat from "./LogoRocketseat";
 import '../styles/scrollbar.css'
 
 import "@vime/core/themes/default.css";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
 import Footer from "./Footer";
 
-type VideoProps = {
+type LessonScreenProps = {
     lessonSlug: string;
 };
 
-export default function Video({ lessonSlug }: VideoProps) {
+export default function LessonScreen({ lessonSlug }: LessonScreenProps) {
     const { data } = useGetLessonBySlugQuery({
         variables: { slug: lessonSlug },
         fetchPolicy: "no-cache",
