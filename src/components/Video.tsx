@@ -7,6 +7,7 @@ import {
 } from "phosphor-react";
 import React from "react";
 import LogoRocketseat from "./LogoRocketseat";
+import '../styles/scrollbar.css'
 
 import "@vime/core/themes/default.css";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
@@ -33,7 +34,7 @@ export default function Video({ lessonSlug }: VideoProps) {
     }
 
     return (
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col max-h-[calc(100vh-75px)] overflow-y-scroll scrollbar scrollbar-primary">
             <div className="bg-black flex justify-center">
                 <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
                     <Player controls>

@@ -1,0 +1,17 @@
+.scrollbar::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.scrollbar-invisible::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+    @apply bg-gray-500;
+    border-radius: 0.25rem;
+}
+
+.scrollbar-secondary::-webkit-scrollbar-thumb {
+    @apply bg-gray-400;
+    border-radius: 0.25rem;
+}
