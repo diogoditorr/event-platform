@@ -55,7 +55,7 @@ export default function Lesson({
                             "bg-green-500": isSelectedLesson,
                             "after:absolute after:border-x-[7px] after:border-y-[7px] after:border-green-500 after:top-[calc(50%-0.21875rem)] after:left-[-0.25rem] after:rotate-45 after:rounded-sm":
                                 isSelectedLesson,
-                            "group-hover:border-green-500": isLessonAvailable,
+                            "group-hover:border-green-500": isLessonAvailable && !isSelectedLesson,
                         }
                     )}
                 >
