@@ -23,8 +23,6 @@ export default function Video({ lessonSlug }: VideoProps) {
         fetchPolicy: "no-cache",
     });
 
-    console.log(data);
-
     if (!data || !data.lesson) {
         return (
             <div className="flex-1">
