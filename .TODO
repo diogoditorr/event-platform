@@ -1,6 +1,6 @@
 Challenges (Next level):
-    ☐ Create a placeholder when there is no video selected or load the first video in the list.
-    ☐ Create a loading spinner and skeleton data when the video is loading.
     ☐ Create responsive design.
     ☐ Authorizing the access to the event using a github or google account.
-    ☐ Disable user to click on a lesson when is not available.
+    ✔ Create a placeholder when there is no video selected or load the first video in the list. @done(22-06-29 22:14)
+    ✔ Create a loading spinner and skeleton data when the video is loading. @done(22-06-29 21:19)
+    ✔ Disable user to click on a lesson when is not available. @done(22-06-29 21:19)

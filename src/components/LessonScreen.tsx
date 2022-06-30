@@ -11,6 +11,7 @@ import '../styles/scrollbar.css'
 import "@vime/core/themes/default.css";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
 import Footer from "./Footer";
+import Loading from "./Loading";
 
 type LessonScreenProps = {
     lessonSlug: string;
@@ -25,7 +26,7 @@ export default function LessonScreen({ lessonSlug }: LessonScreenProps) {
     if (!data || !data.lesson) {
         return (
             <div className="flex-1">
-                <p>Carregando...</p>
+                <Loading />
             </div>
         );
     }
