@@ -15,12 +15,16 @@ export default function Subscribe() {
     async function handleSubscribe(e: React.FormEvent) {
         e.preventDefault();
 
-        await createSubscriber({
+        const response = await createSubscriber({
             variables: {
                 name,
                 email,
             },
         });
+
+        if (response.errors) {
+            console.log(response.errors);
+        }
 
         navigate("/event");
     }
@@ -59,13 +63,15 @@ export default function Subscribe() {
                                 type="text"
                                 placeholder="Seu nome completo"
                                 onChange={(e) => setName(e.target.value)}
-                                className="bg-gray-900 rounded px-5 h-14"
+                                required
+                                className="bg-gray-900 rounded px-5 h-14 focus:outline-none focus:border focus:border-green-500 focus:invalid:border-red-500"
                             />
                             <input
                                 type="email"
                                 placeholder="Digite seu e-mail"
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="bg-gray-900 rounded px-5 h-14"
+                                required
+                                className="bg-gray-900 rounded px-5 h-14 focus:outline-none focus:border focus:border-green-500 focus:invalid:border-red-500"
                             />
 
                             <button
