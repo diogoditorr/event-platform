@@ -94,7 +94,7 @@ export default function Subscribe() {
                     </div>
                 </div>
 
-                <img src={codeMockupURL} className="mt-10" alt="" />
+                <img src={codingExampleURL} className="mt-10" alt="" />
             </div>
 
             <div className="px-6 pb-6">
