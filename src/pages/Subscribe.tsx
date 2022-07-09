@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import codeMockupURL from "../assets/code-mockup.png";
+import {
+    useNavigate
+} from "react-router-dom";
+import codingExampleURL from "../assets/coding-example.png";
 import Footer from "../components/Footer";
 import { Logo } from "../components/Logo";
 import { useCreateSubscriberMutation } from "../graphql/generated";
 
 export default function Subscribe() {
-    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+
+    const navigate = useNavigate();
 
     const [createSubscriber, { loading }] = useCreateSubscriberMutation();
 
@@ -82,6 +85,12 @@ export default function Subscribe() {
                                 Garantir minha vaga
                             </button>
                         </form>
+                        <button
+                            className="bg-white text-gray-700"
+                            onClick={() => navigate("/auth/callback/github")}
+                        >
+                            Autenticar com o GitHub
+                        </button>
                     </div>
                 </div>
 

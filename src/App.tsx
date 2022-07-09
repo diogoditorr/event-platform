@@ -5,22 +5,23 @@ import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AuthContextProvider } from "./contexts/AuthContext";
-import { ReactQueryDevtools } from 'react-query/devtools';
+import { ReactQueryDevtools } from "react-query/devtools";
+import './services/firebase';
 
 const queryClient = new QueryClient();
 
 function App() {
     return (
-        <ApolloProvider client={client}>
-            <QueryClientProvider client={queryClient}>
-                <AuthContextProvider>
-                    <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+            <ApolloProvider client={client}>
+                <BrowserRouter>
+                    <AuthContextProvider>
                         <Router />
-                        <ReactQueryDevtools initialIsOpen={false} />
-                    </BrowserRouter>
-                </AuthContextProvider>
-            </QueryClientProvider>
-        </ApolloProvider>
+                    </AuthContextProvider>
+                </BrowserRouter>
+            </ApolloProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
     );
 }
 
