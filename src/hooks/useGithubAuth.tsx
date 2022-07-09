@@ -40,6 +40,7 @@ export default function useGithubAuth() {
                 throw new RedirectResultError("No credential");
             }
 
+            shouldConnect = false;
             setCredential(credential);
             setResult(result);
         } catch (redirectError) {
