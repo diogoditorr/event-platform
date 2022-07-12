@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import codingExampleURL from "../assets/coding-example.png";
 import Footer from "../components/Footer";
-import { Logo } from "../components/Logo";
+import { AppLogo } from "../components/AppLogo";
 import { useCreateSubscriberMutation } from "../graphql/generated";
 
 export default function Subscribe() {
@@ -37,7 +37,7 @@ export default function Subscribe() {
             <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
                 <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
                     <div className="max-w-[640px]">
-                        <Logo />
+                        <AppLogo />
 
                         <h1 className="mt-8 text-[2.5rem] leading-tight">
                             Construa uma{" "}
