@@ -1,22 +1,29 @@
+import { signInAnonymously } from "firebase/auth";
 import React, { useState } from "react";
-import {
-    useNavigate
-} from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import codingExampleURL from "../assets/coding-example.png";
-import Footer from "../components/Footer";
 import { AppLogo } from "../components/AppLogo";
+import AuthenticateGithubButton from "../components/AuthenticateGithubButton";
+import Footer from "../components/Footer";
 import { useCreateSubscriberMutation } from "../graphql/generated";
+import useProviderRedirectAuth from "../hooks/useProviderRedirectAuth";
+import { auth } from "../services/firebase";
 
 export default function Subscribe() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-
+    const { result } = useProviderRedirectAuth();
+    const [createSubscriber, { loading }] = useCreateSubscriberMutation();
     const navigate = useNavigate();
 
-    const [createSubscriber, { loading }] = useCreateSubscriberMutation();
+    if (result?.user) {
+        return <Navigate to="/event" replace />;
+    }
 
     async function handleSubscribe(e: React.FormEvent) {
         e.preventDefault();
+
+        await signInAnonymously(auth);
 
         const response = await createSubscriber({
             variables: {
@@ -29,7 +36,7 @@ export default function Subscribe() {
             console.log(response.errors);
         }
 
-        navigate("/event");
+        navigate("/event", { replace: true });
     }
 
     return (
@@ -85,12 +92,10 @@ export default function Subscribe() {
                                 Garantir minha vaga
                             </button>
                         </form>
-                        <button
-                            className="bg-white text-gray-700"
-                            onClick={() => navigate("/auth/callback/github")}
-                        >
-                            Autenticar com o GitHub
-                        </button>
+                        <div className="my-3 flex justify-center font-bold text-sm">
+                            Ou
+                        </div>
+                        <AuthenticateGithubButton />
                     </div>
                 </div>
 

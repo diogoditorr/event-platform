@@ -3,7 +3,6 @@ import {
     getRedirectResult,
     GithubAuthProvider,
     OAuthCredential,
-    signInWithRedirect,
     UserCredential,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
@@ -17,17 +16,14 @@ export type TypeRedirectError =
 
 class RedirectResultError extends Error {}
 
-const githubProvider = new GithubAuthProvider();
-githubProvider.addScope("user");
-
-export default function useGithubAuth() {
+export default function useProviderRedirectAuth() {
     const [result, setResult] = useState<UserCredential | null>(null);
     const [credential, setCredential] = useState<OAuthCredential | null>(null);
     const [error, setError] = useState<TypeRedirectError>(null);
 
     async function verifyRedirectResult() {
-        let shouldConnect = true;
         let error: TypeRedirectError = null;
+        let credential: OAuthCredential | null = null;
 
         try {
             const result = await getRedirectResult(auth);
@@ -35,44 +31,33 @@ export default function useGithubAuth() {
                 throw new RedirectResultError("No redirect result");
             }
 
-            const credential = GithubAuthProvider.credentialFromResult(result);
+            if (result.providerId === "github.com") {
+                credential = GithubAuthProvider.credentialFromResult(result);
+            }
+
             if (!credential) {
                 throw new RedirectResultError("No credential");
             }
 
-            shouldConnect = false;
-            setCredential(credential);
             setResult(result);
+            setCredential(credential);
         } catch (redirectError) {
             if (redirectError instanceof FirebaseError) {
                 error = redirectError;
-                shouldConnect = false;
             } else if (redirectError instanceof RedirectResultError) {
                 error = redirectError;
-            } else {
-                shouldConnect = false;
             }
             setError(error);
         }
-
-        return {
-            shouldConnect,
-        };
     }
 
     useEffect(() => {
-        async function authenticate() {
-            const { shouldConnect } = await verifyRedirectResult();
-
-            if (shouldConnect) {
-                await signInWithRedirect(auth, githubProvider);
-            }
+        async function execute() {
+            await verifyRedirectResult();
         }
 
-        const delay = setTimeout(() => {
-            authenticate();
-        }, 1000);
-
+        const delay = setTimeout(execute, 1000);
+        
         return () => {
             clearTimeout(delay);
         };
