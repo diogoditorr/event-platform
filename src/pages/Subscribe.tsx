@@ -44,8 +44,8 @@ export default function Subscribe() {
             <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
                 <div
                     className="
-                    w-full max-w-[1100px] flex flex-col items-center mt-20 mx-auto 
-                    lg:flex-row lg:justify-between
+                    w-full max-w-[1100px] flex flex-col items-center mt-10 mx-auto 
+                    lg:flex-row lg:justify-between lg:mt-20
                 "
                 >
                     <div className="max-w-[640px] flex flex-col items-center px-8 mb-8 text-center 
