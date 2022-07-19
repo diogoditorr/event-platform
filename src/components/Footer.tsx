@@ -4,7 +4,7 @@ import LogoRocketseat from "./LogoRocketseat";
 export default function Footer() {
     return (
         <div
-            className="flex flex-col items-center pt-6 border-t border-t-gray-500 text-gray-300 gap-2
+            className="flex flex-col items-center pt-6 border-t border-t-gray-500 text-gray-300 gap-6
             sm:flex-row sm:justify-between
         "
         >

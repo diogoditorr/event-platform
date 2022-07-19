@@ -48,10 +48,12 @@ export default function Subscribe() {
                     lg:flex-row lg:justify-between
                 "
                 >
-                    <div className="max-w-[640px] px-8 mb-16">
+                    <div className="max-w-[640px] flex flex-col items-center px-8 mb-8 text-center 
+                    lg:text-left lg:items-start lg:mb-0
+                    ">
                         <AppLogo />
 
-                        <h1 className="mt-8 text-[2.5rem] leading-tight">
+                        <h1 className="mt-8 text-[1.875rem] leading-tight md:text-[2.5rem]">
                             Construa uma{" "}
                             <strong className="text-blue-500">
                                 aplicação completa
@@ -59,7 +61,7 @@ export default function Subscribe() {
                             , do zero, com{" "}
                             <strong className="text-blue-500">React</strong>
                         </h1>
-                        <p className="mt-4 text-gray-200 leading-relaxed">
+                        <p className="mt-4 text-gray-200 leading-relaxed text-sm md:text-base">
                             Em apenas uma semana você vai dominar na prática uma
                             das tecnologias mais utilizadas e com alta demanda
                             para acessar as melhores oportunidades do mercado.
@@ -71,13 +73,13 @@ export default function Subscribe() {
                         md:w-auto md:border md:rounded lg:mr-8
                     "
                     >
-                        <strong className="text-2xl mb-6 block">
+                        <strong className="text-lg mb-6 block md:text-2xl">
                             Inscreva-se gratuitamente
                         </strong>
 
                         <form
                             onSubmit={handleSubscribe}
-                            className="flex flex-col gap-2 w-full"
+                            className="flex flex-col gap-2 w-full text-sm md:text-base"
                         >
                             <input
                                 type="text"
@@ -109,10 +111,12 @@ export default function Subscribe() {
                     </div>
                 </div>
 
-                <img src={codingExampleURL} className="mb-10 lg:mt-10" alt="" />
+                <div className="flex mb-10 px-2 lg:mt-10">
+                    <img src={codingExampleURL} alt="Image showing the Visual Studio Code IDE" />
+                </div>
             </div>
 
-            <div className="sm:px-6 pb-6">
+            <div className="pb-6 sm:px-6">
                 <Footer />
             </div>
         </>
