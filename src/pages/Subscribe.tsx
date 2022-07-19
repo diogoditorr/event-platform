@@ -42,8 +42,13 @@ export default function Subscribe() {
     return (
         <>
             <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
-                <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
-                    <div className="max-w-[640px]">
+                <div
+                    className="
+                    w-full max-w-[1100px] flex flex-col items-center mt-20 mx-auto 
+                    lg:flex-row lg:justify-between
+                "
+                >
+                    <div className="max-w-[640px] px-8 mb-16">
                         <AppLogo />
 
                         <h1 className="mt-8 text-[2.5rem] leading-tight">
@@ -60,7 +65,12 @@ export default function Subscribe() {
                             para acessar as melhores oportunidades do mercado.
                         </p>
                     </div>
-                    <div className="p-8 bg-gray-700 border border-gray-500 rounded">
+                    <div
+                        className="
+                        w-full p-8 bg-gray-700 border-y border-gray-500
+                        md:w-auto md:border md:rounded lg:mr-8
+                    "
+                    >
                         <strong className="text-2xl mb-6 block">
                             Inscreva-se gratuitamente
                         </strong>
@@ -99,10 +109,10 @@ export default function Subscribe() {
                     </div>
                 </div>
 
-                <img src={codingExampleURL} className="mt-10" alt="" />
+                <img src={codingExampleURL} className="mb-10 lg:mt-10" alt="" />
             </div>
 
-            <div className="px-6 pb-6">
+            <div className="sm:px-6 pb-6">
                 <Footer />
             </div>
         </>
