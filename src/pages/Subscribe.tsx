@@ -49,9 +49,9 @@ export default function Subscribe() {
                 "
                 >
                     <div className="max-w-[640px] flex flex-col items-center px-8 mb-8 text-center 
-                    lg:text-left lg:items-start lg:mb-0
+                    md:mb-12 lg:text-left lg:items-start lg:mb-0
                     ">
-                        <AppLogo />
+                        <AppLogo height={34} />
 
                         <h1 className="mt-8 text-[1.875rem] leading-tight md:text-[2.5rem]">
                             Construa uma{" "}
@@ -116,7 +116,7 @@ export default function Subscribe() {
                 </div>
             </div>
 
-            <div className="pb-6 sm:px-6">
+            <div className="pb-6 px-6">
                 <Footer />
             </div>
         </>
