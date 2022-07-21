@@ -1,13 +1,18 @@
 import React from "react";
-import { useGetLessonsQuery } from "../graphql/generated";
+import { GetLessonsQuery } from "../graphql/generated";
 import Lesson from "./Lesson";
 import "../styles/scrollbar.css";
 
-export default function Lessons() {
-    const { data } = useGetLessonsQuery();
+type Props = {
+    data: GetLessonsQuery | undefined;
+}
 
+export default function Lessons({ data }: Props) {
     return (
-        <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600 max-h-[calc(100vh-75px)] overflow-y-scroll scrollbar scrollbar-primary">
+        <div className="w-full max-h-[calc(100vh-75px)] p-6 pb-16 bg-gray-700 border-l border-gray-600 
+        overflow-y-scroll scrollbar scrollbar-primary
+        lg:w-[348px]
+        ">
             <span className="font-bold text-2xl pb-6 mb-6 border-b border-gray-500 block">
                 Cronograma de aulas
             </span>
@@ -25,6 +30,6 @@ export default function Lessons() {
                     );
                 })}
             </div>
-        </aside>
+        </div>
     );
 }

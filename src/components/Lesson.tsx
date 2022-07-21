@@ -82,7 +82,7 @@ export default function Lesson({
 
                         <span
                             className={classNames(
-                                "text-xs font-bold rounded py-[0.125rem] px-2 text-white border",
+                                "text-xs text-center font-bold rounded py-[0.125rem] px-2 text-white border",
                                 {
                                     "border-white": isSelectedLesson,
                                     "border-green-300": !isSelectedLesson,

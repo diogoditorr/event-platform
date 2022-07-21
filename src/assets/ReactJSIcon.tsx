@@ -1,11 +1,11 @@
-import React from "react";
+import React, { SVGProps } from "react";
 
-type Props = {
+type Props = SVGProps<SVGSVGElement> & {
     width?: number | string;
     height?: number | string;
 }
 
-function ReactJSIcon({ width = 654, height = 575 }: Props) {
+function ReactJSIcon({ width, height, ...rest }: Props) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -13,6 +13,7 @@ function ReactJSIcon({ width = 654, height = 575 }: Props) {
             height={height}
             fill="none"
             viewBox="0 0 654 575"
+            {...rest}
         >
             <path
                 fill="url(#paint0_linear_24_689)"

@@ -4,7 +4,7 @@ import { AppLogo } from "./AppLogo";
 export default function AppLoading() {
     return (
         <div className="h-screen w-full flex flex-col gap-3 items-center justify-center">
-            <AppLogo />
+            <AppLogo height={34} />
             <LineMdLoadingTwotoneLoop height={28} width={28} />
         </div>
     );
